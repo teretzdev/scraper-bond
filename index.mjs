@@ -5,5 +5,5 @@ const bonds = [new Bond({name: 'Bond1', value: 100, yield: 5, maturityDate: new 
 
 console.log('Bond Number\tBook In Date\tStatus Type\tAmount\tCID\tName\tStreet\tCity\tState\tOffense\tMdate');
 bonds.forEach((bond, index) => {
-    console.log(`${index + )\t${new Date()}\tActive\t${bond.value}\t-\t${bond.name}\t-\t-\t-\t-\t${bond.maturityDate}`);
+    console.log(`${index + 1}\t${new Date()}\tActive\t${bond.value}\t-\t${bond.name}\t-\t-\t-\t-\t${bond.maturityDate}`);
 });
