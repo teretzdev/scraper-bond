@@ -5,5 +5,5 @@ export class Bond {
     this.value = data.value;
     this.yield = data.yield;
     this.maturityDate = data.maturityDate;
-  }
+   }
 }
