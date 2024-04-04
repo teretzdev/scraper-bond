@@ -1,26 +1,48 @@
 // In pdfParse.cjs
 const PDFParser = require('pdf2json');
+ async function doThing(){
+    for (let i = 1; i <= numPages; i++) {
+        const page = await pdf.getPage(i);
+        const textContent = await page.getTextContent();
+        
+        // Assuming each bond record is structured over two lines
+        const lines = textContent.items.map(item => item.str.trim());
+        for (let j = 0; j < lines.length; j += 2) {
+            console/log('lklk')
+            const bondInfoLine = lines[j];
+            const addressInfoLine = lines[j + 1];
 
-let filePath = 'BOND.pdf'
-const parsePDF = async (filePath) => {
- 
-  
-  const pdfParser = new PDFParser();
-  pdfParser.loadPDF(filePath);
+            // Parse the individual lines
+            const bondInfo = parseBondInfo(bondInfoLine);
+            const addressInfo = parseAddressInfo(addressInfoLine);
 
-  return new Promise((resolve, reject) => {
-    pdfParser.on('pdfParser_dataError', errData => reject(errData.parserError)));
-    pdfParser.on('pdfParser_dataReady', pdfData => {
-        if (!pdfData || !pdfData.formImage || !pdfData.formImage.Pages) {
-            reject(new Error('Invalid PDF structure.'));
-        }
+            // Combine the parsed info into a single object
+            const bondEntry = { ...bondInfo, ...addressInfo };
 
-        const textPages = pdfData.formImage.Pages.map(page => 
-            page.Texts.map(t => decodeURIComponent(t.R[0].T)).join(' ')
-        ).join('\n');
-        resolve(textPages);
-    });
-  });
-};
+            // Log the bond entry for debugging
+            console.log(`Parsed bond entry:`, bondEntry);
+
+            bondEntries.push(bondEntry); 
+ }}
+ } 
+async function parsePDF (filePath) {
+    const pdfParser = new PDFParser();
+    console.log('filepath is:', filePath)
+    pdfParser.loadPDF(filePath);
+
+    return new Promise((resolve, reject) => {
+        const bondEntries = [];
+
+doThing()
+
+    // After all pages are processed, return the array of bond entries
+    return bondEntries;
+}
+);
+
+}
+
+
+
 
 module.exports = { parsePDF };
