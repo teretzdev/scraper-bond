@@ -9,7 +9,7 @@ async function main() {
     await Bond.sync();
     for (const entry of bondEntries) {
       await Bond.create(entry);
-    }
+     }
     console.log(`${bondEntries.length} bond entries have been saved to the database.`);
   } catch (error) {
     console.error('Failed to process PDF or save bond entries:', error);
