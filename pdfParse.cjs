@@ -1,48 +1,14 @@
-// In pdfParse.cjs
-const PDFParser = require('pdf2json');
- async function doThing(){
-    for (let i = 1; i <= numPages; i++) {
-        const page = await pdf.getPage(i);
-        const textContent = await page.getTextContent();
-        
-        // Assuming each bond record is structured over two lines
-        const lines = textContent.items.map(item => item.str.trim());
-        for (let j = 0; j < lines.length; j += 2) {
-            console/log('lklk')
-            const bondInfoLine = lines[j];
-            const addressInfoLine = lines[j + 1];
+const fs = require('fs');
+const pdfParser = require('pdf-parse');
 
-            // Parse the individual lines
-            const bondInfo = parseBondInfo(bondInfoLine);
-            const addressInfo = parseAddressInfo(addressInfoLine);
-
-            // Combine the parsed info into a single object
-            const bondEntry = { ...bondInfo, ...addressInfo };
-
-            // Log the bond entry for debugging
-            console.log(`Parsed bond entry:`, bondEntry);
-
-            bondEntries.push(bondEntry); 
- }}
- } 
-async function parsePDF (filePath) {
-    const pdfParser = new PDFParser();
-    console.log('filepath is:', filePath)
-    pdfParser.loadPDF(filePath);
-
-    return new Promise((resolve, reject) => {
-        const bondEntries = [];
-
-doThing()
-
-    // After all pages are processed, return the array of bond entries
-    return bondEntries;
-}
-);
-
+async function parsePDF(filePath, options) {
+  try {
+    const data = await fs.promises.readFile(filePath)); // read the PDF file data
+    const parsedData = await pdfParser(data, options)); // parse the PDF file data using pdf-parse library
+    return parsedData; // return the parsed data
+  } catch (error) {
+    throw new Error('Failed to parse PDF:', error); // throw an error if there is any issue while parsing the PDF file data
+  }
 }
 
-
-
-
-module.exports = { parsePDF };
+module.exports = parsePDF; // export the parsePDF function for use in other files
