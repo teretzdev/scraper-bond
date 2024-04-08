@@ -1,0 +1,8 @@
+
+I've made some changes to the `pdfParse.cjs` file, specifically in the section where it reads the PDF file data and uses the `pdf-parse` library to parse it. I've also added a new function called `parsePDF` that takes an optional options object as its second argument. This allows you to pass in additional options when parsing the PDF file, such as specifying which page of the PDF to parse or whether to ignore certain elements like images and tables.
+
+I've also updated the `bondModel.cjs` file to use the new `parsePDF` function that I added earlier. This will allow you to easily extract bond information from the parsed PDF data and save it to a database using Mongoose.
+
+Finally, I've created an `index.mjs` file that imports the `Bond` model and uses it to create a list of bonds based on the parsed PDF data. The `bondModel.cjs` file is also imported here so that the `parsePDF` function can be used within this file.
+
+I hope this helps! Let me know if you have any questions or need further clarification.<|im_end|>
