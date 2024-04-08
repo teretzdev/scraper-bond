@@ -1,0 +1,27 @@
+{
+  "name": "bond-parser",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bond.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "csv-writer": "^1.6.0",
+    "fs": "^0.0.1-security",
+    "mongodb": "^6.5.0",
+    "mongoose": "^8.2.4",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.9.3",
+    "pdf-lib": "^1.17.1",
+    "pdf-parse": "^1.1.1",
+    "pdf.js": "^0.1.0",
+    "pdf2json": "^3.0.5",
+    "pdfjs-dist": "^4.0.379",
+    "sequelize": "^6.37.2"
+  }
+}
